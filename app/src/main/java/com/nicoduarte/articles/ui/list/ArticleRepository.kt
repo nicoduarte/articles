@@ -26,10 +26,16 @@ class ArticleRepository(application: Application) {
             .subscribeOn(Schedulers.io())
             .map { it.hits }
             .onErrorResumeNext { _: Throwable -> getArticlesFromDb() }
-            .doOnNext { articleDao.insertAll(it) }
+            .doOnNext {
+                articleDao.insertAll(it)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeOn(Schedulers.io())
+            }
     }
 
     private fun getArticlesFromDb(): Observable<List<Article>> {
         return articleDao.getArticles()
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
     }
 }

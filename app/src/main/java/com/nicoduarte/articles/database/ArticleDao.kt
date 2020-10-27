@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.nicoduarte.articles.database.model.Article
+import io.reactivex.Completable
 import io.reactivex.Observable
 
 @Dao
@@ -14,5 +15,5 @@ interface ArticleDao {
     fun getArticles(): Observable<List<Article>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(movies: List<Article>)
+    fun insertAll(articles: List<Article>): Completable
 }

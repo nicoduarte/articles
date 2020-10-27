@@ -19,13 +19,13 @@ data class Article (
 	@ColumnInfo(name = "author")
 	@SerializedName("author") val author : String,
 	@ColumnInfo(name = "points")
-	@SerializedName("points") val points : String?,
+	@SerializedName("points") val points : Int?,
 	@ColumnInfo(name = "story_text")
 	@SerializedName("story_text") val storyText : String?,
 	@ColumnInfo(name = "comment_text")
 	@SerializedName("comment_text") val commentText : String?,
 	@ColumnInfo(name = "num_comments")
-	@SerializedName("num_comments") val numComments : String?,
+	@SerializedName("num_comments") val numComments : Int?,
 	@ColumnInfo(name = "story_id")
 	@SerializedName("story_id") val storyId : Int,
 	@ColumnInfo(name = "story_title")
@@ -36,9 +36,7 @@ data class Article (
 	@SerializedName("parent_id") val parentId : Int,
 	@ColumnInfo(name = "created_at_i")
 	@SerializedName("created_at_i") val createdAtI : Int,
-	@ColumnInfo(name = "_tags")
-	@SerializedName("_tags") val tags : List<String>,
 	@PrimaryKey
 	@ColumnInfo(name = "id")
-	@SerializedName("objectID") val id : Int
+	@SerializedName("objectID") val id : String
 ) : Parcelable

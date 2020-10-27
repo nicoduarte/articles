@@ -8,13 +8,13 @@ import androidx.room.TypeConverters
 import com.nicoduarte.articles.database.model.Article
 
 @Database(entities = [Article::class], version = 1)
-@TypeConverters(DataConverter::class)
 abstract class ArticleDatabase : RoomDatabase() {
 
     abstract fun articleDao(): ArticleDao
 
     companion object {
         private var INSTANCE: ArticleDatabase? = null
+        private const val DATABASE_NAME = "article_database"
 
         fun getDatabase(context: Context): ArticleDatabase {
             if (INSTANCE == null) {
@@ -22,7 +22,8 @@ abstract class ArticleDatabase : RoomDatabase() {
                     if (INSTANCE == null) {
                         INSTANCE = Room.databaseBuilder(
                             context.applicationContext,
-                            ArticleDatabase::class.java, "article_database"
+                            ArticleDatabase::class.java,
+                            DATABASE_NAME
                         ).build()
                     }
                 }

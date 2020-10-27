@@ -10,7 +10,7 @@ import com.nicoduarte.articles.ui.utils.inflate
 import kotlinx.android.synthetic.main.item_article.view.*
 
 class ArticleAdapter(
-    private var articleList: MutableList<Article>,
+    private var articleList: List<Article>,
     private val clickListener: (Article) -> Unit
 )
     : RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
@@ -27,9 +27,8 @@ class ArticleAdapter(
     }
 
     fun addArticles(list: List<Article>) {
-        val positionStart = articleList.size
-        articleList.addAll(list)
-        notifyItemRangeInserted(positionStart, articleList.size)
+        articleList = list
+        notifyDataSetChanged()
     }
 
     inner class MovieHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

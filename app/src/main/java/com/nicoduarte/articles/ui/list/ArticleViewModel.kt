@@ -18,7 +18,7 @@ class ArticleViewModel(
         getArticles()
     }
 
-    private fun getArticles(page: Int = 1) {
+    fun getArticles(page: Int = 1) {
         articleLiveData.postValue(Result.loading())
         val disposable = articleRepository.getArticles(page)
             .subscribe(this::onSuccessMovies, this::onErrorMovies)

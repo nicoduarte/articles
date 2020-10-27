@@ -25,14 +25,18 @@ class ArticleListActivity : BaseActivity() {
         toolbarToLoad(toolbar)
         setupList()
         viewModel.getArticleLiveData().observe(this, { observerLiveData(it) })
+        refreshLayout.setOnRefreshListener { viewModel.getArticles() }
     }
 
     private fun observerLiveData(results: Result<List<Article>>) {
         results.setState({
+            refreshLayout.isRefreshing = false
             (rvArticles.adapter as ArticleAdapter).addArticles(it)
         }, {
             showMessage(rootView, it)
-        }, {})
+        }, {
+            refreshLayout.isRefreshing = true
+        })
     }
 
     private fun setupList() {
