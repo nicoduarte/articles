@@ -25,6 +25,12 @@ class ArticleAdapter(
         (holder as MovieHolder).bind(articleList[position])
     }
 
+    fun addArticles(list: List<Article>) {
+        val positionStart = articleList.size
+        articleList.addAll(list)
+        notifyItemRangeInserted(positionStart, articleList.size)
+    }
+
     inner class MovieHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(article: Article) = with(itemView) {
             clickListener(article)

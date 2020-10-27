@@ -8,17 +8,17 @@
 
     <TextView
         android:id="@+id/tvTitle"
+        style="@style/TextStyle2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
         android:maxLines="2"
         tools:text="Colibri: A Browser Without Tabs" />
 
     <TextView
         android:id="@+id/tvAuthor"
+        style="@style/TextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size_12sp"
         tools:text="NiceNamesOrg - 1h" />
 
 </LinearLayout>
