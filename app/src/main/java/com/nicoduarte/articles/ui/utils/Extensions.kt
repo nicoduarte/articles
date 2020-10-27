@@ -44,13 +44,13 @@ fun Context.showMessage(container: View?, message: String) {
     }
 }
 
-fun getDateFormatted(strDate: String?, formatOrigin: String = "yyyy-MM-dd'T'hh:mm:ss"): String {
+fun convertDate(strDate: String?, formatOrigin: String = "yyyy-MM-dd'T'hh:mm:ss"): Long {
     return try{
         val sdfOrigin = SimpleDateFormat(formatOrigin, Locale.US)
-        val sdfDestiny = SimpleDateFormat("hh:mm", Locale.US)
-        sdfDestiny.format(sdfOrigin.parse(strDate))
+        sdfOrigin.timeZone = TimeZone.getTimeZone("UTC")
+        sdfOrigin.parse(strDate).time
     } catch (e: Exception) {
-        ""
+        0
     }
 }
 
