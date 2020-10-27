@@ -40,7 +40,7 @@ class ArticleAdapter(
                 article.author,
                 getDateFormatted(article.createdAt)
             )
-            clickListener(article)
+            setOnClickListener { clickListener(article) }
         }
     }
 }

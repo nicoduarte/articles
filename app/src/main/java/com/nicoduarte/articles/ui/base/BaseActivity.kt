@@ -15,6 +15,5 @@ open class BaseActivity : AppCompatActivity(), IToolbar {
 
     override fun enableHomeDisplay(value: Boolean) {
         supportActionBar?.setDisplayHomeAsUpEnabled(value)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
     }
 }
