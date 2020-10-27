@@ -2,6 +2,7 @@ package com.nicoduarte.articles.ui.list
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.nicoduarte.articles.R
 import com.nicoduarte.articles.api.Result
 import com.nicoduarte.articles.api.response.ArticleResponse
@@ -24,9 +25,9 @@ class ArticleListActivity : BaseActivity() {
         viewModel.getArticleLiveData().observe(this, { observerLiveData(it) })
     }
 
-    private fun observerLiveData(results: Result<ArticleResponse>) {
+    private fun observerLiveData(results: Result<List<Article>>) {
         results.setState({
-//            (rvArticles.adapter as ArticleAdapter).addArticles(it)
+            (rvArticles.adapter as ArticleAdapter).addArticles(it)
         }, {
             showMessage(rootView, it)
         }, {})
@@ -34,6 +35,7 @@ class ArticleListActivity : BaseActivity() {
 
     private fun setupList() {
         rvArticles.adapter = ArticleAdapter(mutableListOf()) { goToDetail(it) }
+        rvArticles.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
     }
 
     private fun goToDetail(article: Article) {

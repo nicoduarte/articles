@@ -3,9 +3,9 @@ package com.nicoduarte.articles.ui.list
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.nicoduarte.articles.database.Article
 import com.nicoduarte.articles.api.Result
 import com.nicoduarte.articles.api.response.ArticleResponse
+import com.nicoduarte.articles.database.Article
 import io.reactivex.disposables.CompositeDisposable
 
 class ArticleViewModel(
@@ -13,7 +13,7 @@ class ArticleViewModel(
 ) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
-    private val articleLiveData = MutableLiveData<Result<ArticleResponse>>()
+    private val articleLiveData = MutableLiveData<Result<List<Article>>>()
 
     init {
         getArticles()
@@ -30,11 +30,11 @@ class ArticleViewModel(
         articleLiveData.postValue(Result.error(message = error.message))
     }
 
-    private fun onSuccessMovies(list: ArticleResponse) {
+    private fun onSuccessMovies(list: List<Article>) {
         articleLiveData.postValue(Result.success(list))
     }
 
-    fun getArticleLiveData(): LiveData<Result<ArticleResponse>> = articleLiveData
+    fun getArticleLiveData(): LiveData<Result<List<Article>>> = articleLiveData
 
     override fun onCleared() {
         compositeDisposable.clear()

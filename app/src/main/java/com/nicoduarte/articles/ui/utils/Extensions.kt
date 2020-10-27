@@ -44,10 +44,10 @@ fun Context.showMessage(container: View?, message: String) {
     }
 }
 
-fun getDateFormatted(strDate: String?, formatOrigin: String?): String {
+fun getDateFormatted(strDate: String?, formatOrigin: String = "yyyy-MM-dd'T'hh:mm:ss"): String {
     return try{
         val sdfOrigin = SimpleDateFormat(formatOrigin, Locale.US)
-        val sdfDestiny = SimpleDateFormat("yyyy", Locale.US)
+        val sdfDestiny = SimpleDateFormat("hh:mm", Locale.US)
         sdfDestiny.format(sdfOrigin.parse(strDate))
     } catch (e: Exception) {
         ""

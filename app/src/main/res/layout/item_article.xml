@@ -4,7 +4,9 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="@dimen/margin_16dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:clickable="true"
+    android:background="?android:selectableItemBackground">
 
     <TextView
         android:id="@+id/tvTitle"
@@ -19,6 +21,7 @@
         style="@style/TextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_4dp"
         tools:text="NiceNamesOrg - 1h" />
 
 </LinearLayout>
