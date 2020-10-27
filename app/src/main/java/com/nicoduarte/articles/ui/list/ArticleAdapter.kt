@@ -4,7 +4,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.nicoduarte.articles.R
-import com.nicoduarte.articles.database.Article
+import com.nicoduarte.articles.database.model.Article
 import com.nicoduarte.articles.ui.utils.getDateFormatted
 import com.nicoduarte.articles.ui.utils.inflate
 import kotlinx.android.synthetic.main.item_article.view.*

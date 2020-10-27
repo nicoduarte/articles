@@ -1,4 +1,4 @@
-package com.nicoduarte.articles.database
+package com.nicoduarte.articles.database.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

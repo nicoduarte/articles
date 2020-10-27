@@ -6,7 +6,7 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.nicoduarte.articles.R
 import com.nicoduarte.articles.api.Result
-import com.nicoduarte.articles.database.Article
+import com.nicoduarte.articles.database.model.Article
 import com.nicoduarte.articles.ui.base.BaseActivity
 import com.nicoduarte.articles.ui.utils.showMessage
 import com.nicoduarte.articles.ui.webview.WebViewActivity

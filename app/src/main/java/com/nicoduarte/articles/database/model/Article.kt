@@ -1,4 +1,4 @@
-package com.nicoduarte.articles.database
+package com.nicoduarte.articles.database.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
@@ -21,5 +21,4 @@ data class Article (
 	@SerializedName("created_at_i") val createdAtI : Int,
 	@SerializedName("_tags") val tags : List<String>,
 	@SerializedName("objectID") val objectID : Int
-//	@SerializedName("_highlightResult") val highlightResult : HighlightResult
 ) : Parcelable

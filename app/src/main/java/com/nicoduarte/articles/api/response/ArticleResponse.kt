@@ -1,7 +1,7 @@
 package com.nicoduarte.articles.api.response
 
 import com.google.gson.annotations.SerializedName
-import com.nicoduarte.articles.database.Article
+import com.nicoduarte.articles.database.model.Article
 
 data class ArticleResponse(
     @SerializedName("hits") val hits : List<Article>,

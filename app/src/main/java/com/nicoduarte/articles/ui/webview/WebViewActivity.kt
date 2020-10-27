@@ -7,7 +7,7 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.nicoduarte.articles.R
-import com.nicoduarte.articles.database.Article
+import com.nicoduarte.articles.database.model.Article
 import com.nicoduarte.articles.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_web_view.*
 

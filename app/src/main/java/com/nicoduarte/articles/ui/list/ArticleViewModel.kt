@@ -4,8 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.nicoduarte.articles.api.Result
-import com.nicoduarte.articles.api.response.ArticleResponse
-import com.nicoduarte.articles.database.Article
+import com.nicoduarte.articles.database.model.Article
 import io.reactivex.disposables.CompositeDisposable
 
 class ArticleViewModel(
