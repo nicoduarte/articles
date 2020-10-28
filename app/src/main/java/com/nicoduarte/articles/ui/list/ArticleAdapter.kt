@@ -1,17 +1,16 @@
 package com.nicoduarte.articles.ui.list
 
-import android.text.format.DateUtils
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.nicoduarte.articles.R
 import com.nicoduarte.articles.database.model.Article
-import com.nicoduarte.articles.ui.utils.convertDate
+import com.nicoduarte.articles.ui.utils.getRelativeTime
 import com.nicoduarte.articles.ui.utils.inflate
 import kotlinx.android.synthetic.main.item_article.view.*
 
 class ArticleAdapter(
-    private var articleList: List<Article>,
+    private var articleList: MutableList<Article>,
     private val clickListener: (Article) -> Unit
 )
     : RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
@@ -28,21 +27,28 @@ class ArticleAdapter(
     }
 
     fun addArticles(list: List<Article>) {
-        articleList = list
+        articleList = list.toMutableList()
         notifyDataSetChanged()
+    }
+
+    fun removeItem(position: Int): Article {
+        val article = articleList.removeAt(position)
+        notifyItemRemoved(position)
+        return article
+    }
+
+    fun addItem(item: Article, position: Int) {
+        articleList[position] = item
+        notifyItemInserted(position)
     }
 
     inner class MovieHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(article: Article) = with(itemView) {
             tvTitle.text = article.storyTitle?.let { it } ?: article.title
-            tvAuthor.text =  context.getString(
-                R.string.author_created_at,
-                article.author,
-                DateUtils.getRelativeTimeSpanString(
-                    convertDate(article.createdAt),
-                    System.currentTimeMillis(),
-                    1,
-                    DateUtils.FORMAT_ABBREV_RELATIVE)
+            tvAuthor.text = context.getString(
+                    R.string.author_created_at,
+                    article.author,
+                    getRelativeTime(article.createdAt)
             )
             setOnClickListener { clickListener(article) }
         }

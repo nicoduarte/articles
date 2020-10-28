@@ -2,13 +2,11 @@ package com.nicoduarte.articles.ui.utils
 
 import android.content.Context
 import android.graphics.Color
+import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
-import android.widget.ImageView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
 import java.util.*
@@ -28,12 +26,6 @@ fun View.gone() { visibility = View.GONE }
 
 fun View.invisible() { visibility = View.INVISIBLE }
 
-fun ImageView.loadImage(url: String?, placeHolder: Int, circleCrop: Boolean = false) {
-    var requestOptions = RequestOptions().placeholder(placeHolder)
-    requestOptions = if (circleCrop) requestOptions.circleCrop() else requestOptions
-    Glide.with(context).load(url).apply(requestOptions).into(this)
-}
-
 fun Context.showMessage(container: View?, message: String) {
     container?.let {
         Snackbar.make(
@@ -52,6 +44,14 @@ fun convertDate(strDate: String?, formatOrigin: String = "yyyy-MM-dd'T'hh:mm:ss"
     } catch (e: Exception) {
         0
     }
+}
+
+fun getRelativeTime(strDate: String): CharSequence {
+    return DateUtils.getRelativeTimeSpanString(
+            convertDate(strDate),
+            System.currentTimeMillis(),
+            1,
+            DateUtils.FORMAT_ABBREV_RELATIVE)
 }
 
 fun colorPalette(color: Int): Int {

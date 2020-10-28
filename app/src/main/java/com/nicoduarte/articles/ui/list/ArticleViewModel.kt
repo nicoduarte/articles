@@ -13,10 +13,9 @@ class ArticleViewModel(
 
     private val compositeDisposable = CompositeDisposable()
     private val articleLiveData = MutableLiveData<Result<List<Article>>>()
+    private val postIds = mutableListOf<String>()
 
-    init {
-        getArticles()
-    }
+    init { getArticles() }
 
     fun getArticles(page: Int = 1) {
         articleLiveData.postValue(Result.loading())
@@ -30,7 +29,8 @@ class ArticleViewModel(
     }
 
     private fun onSuccessMovies(list: List<Article>) {
-        articleLiveData.postValue(Result.success(list))
+        val filteredList = list.filter { !postIds.contains(it.id) }
+        articleLiveData.postValue(Result.success(filteredList))
     }
 
     fun getArticleLiveData(): LiveData<Result<List<Article>>> = articleLiveData
@@ -38,5 +38,13 @@ class ArticleViewModel(
     override fun onCleared() {
         compositeDisposable.clear()
         super.onCleared()
+    }
+
+    fun addPostId(id: String) {
+        postIds.add(id)
+    }
+
+    fun removeId(id: String) {
+        postIds.remove(id)
     }
 }
