@@ -6,13 +6,13 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.nicoduarte.articles.database.model.Article
 import io.reactivex.Completable
-import io.reactivex.Observable
+import io.reactivex.Single
 
 @Dao
 interface ArticleDao {
 
     @Query("SELECT * from article_table")
-    fun getArticles(): Observable<List<Article>>
+    fun getArticles(): Single<List<Article>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(articles: List<Article>): Completable

@@ -65,6 +65,8 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-rxjava2:$room_version"
+    // Test helpers
+    testImplementation "androidx.room:room-testing:$room_version"
 
     // Swipedecorator
     implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.3'

@@ -30,11 +30,16 @@ class ArticleRepository(application: Application) {
                 articleDao.insertAll(it)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io())
+                    .subscribe({ it.size
+                    }, {
+                        it.message
+                    })
             }
     }
 
     private fun getArticlesFromDb(): Observable<List<Article>> {
         return articleDao.getArticles()
+            .toObservable()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
     }
