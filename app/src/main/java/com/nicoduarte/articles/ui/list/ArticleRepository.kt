@@ -19,7 +19,7 @@ class ArticleRepository(application: Application) {
         articleDao = movieDatabase.articleDao()
     }
 
-    fun getArticles(page: Int): Observable<List<Article>> {
+    fun getArticles(): Observable<List<Article>> {
         return ApiService.getInstance()
             .getArticles()
             .observeOn(AndroidSchedulers.mainThread())

@@ -2,10 +2,7 @@ package com.nicoduarte.articles.ui.webview
 
 import android.os.Bundle
 import android.view.View
-import android.webkit.WebChromeClient
-import android.webkit.WebResourceRequest
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.webkit.*
 import com.nicoduarte.articles.R
 import com.nicoduarte.articles.database.model.Article
 import com.nicoduarte.articles.ui.base.BaseActivity
@@ -23,13 +20,17 @@ class WebViewActivity : BaseActivity() {
 
         toolbarToLoad(toolbar)
         enableHomeDisplay(true)
+        loadArticle()
+    }
 
+    private fun loadArticle() {
         val article = intent.getParcelableExtra<Article>(EXTRA_ARTICLE)
         article?.storyUrl?.let { loadUrl(it) }
             ?: article?.url?.let {loadUrl(it) }
     }
 
     private fun loadUrl(url: String) {
+        webView.settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
         webView.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(
                 view: WebView,
