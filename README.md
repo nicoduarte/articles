@@ -8,7 +8,7 @@ This is an Android application to visualize articles using data from Hacker News
 This app contains two screens:
 
 | Post list  | Post detail |
-:---------:|:--------:|:-------:|
+:---------:|:--------:|
 | ![](https://github.com/nicoduarte/articles/blob/main/art/img_list.png) | ![](https://github.com/nicoduarte/articles/blob/main/art/img_detail.png) |
 
 Offline support using Room and RxJava.
