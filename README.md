@@ -19,3 +19,6 @@ Uses ViewModels and LiveData from Architecture Components with an MVVM architect
 ![](https://github.com/nicoduarte/articles/blob/main/art/img_architecture.png)
 
 Remote data: Backend communication using Retrofit and RxJava2.
+
+## Testing
+We use an in-memory database, since the information stored here is automatically cleared when the process is killed.
